@@ -1,9 +1,9 @@
-class ClienteDAO {
+class PacoteDAO {
     constructor(db){
         this.db = db
     }
 
-    pegaTodosClientes = ()=>{
+    pegaTodosPacotes = ()=>{
         return new Promise((resolve, reject)=>{
             this.db.all('SELECT * FROM CLIENTES', (error, rows)=>{
                 if(error){

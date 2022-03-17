@@ -9,41 +9,42 @@ const filePath = dirname(fileURLToPath(import.meta.url)) + '/database.db'
 const db = new sqlite3.Database(filePath);
 
 
-const CLIENTES_SCHEMA = `
-CREATE TABLE IF NOT EXISTS "CLIENTES" (
+const PACOTES_SCHEMA = `
+CREATE TABLE IF NOT EXISTS "PACOTES" (
     "ID" INTEGER PRIMARY KEY AUTOINCREMENT,
-    "NOME_COMPLETO" varchar(64),
-    "CPF" number,
-    "TELEFONE" number,
-    "EMAIL" varchar(30),
-    "PEDIDOS_ID" int
+    "CLIENTE_ID" INT,
+    "FRETE" float,
+    "PESO" float,
+    "LARGURA" float,
+    "ALTURA" float,
+    "COMPRIMENTO" float
   );`;
 
-const ADD_CLIENTES_DATA = `
-INSERT INTO CLIENTES (ID, NOME_COMPLETO, CPF, TELEFONE, EMAIL, PEDIDOS_ID)
+const ADD_PACOTES_DATA = `
+INSERT INTO CLIENTES (ID, CLIENTE_ID, FRETE, PESO, , LARGURA, ALTURA, COMPRIMENTO)
 VALUES 
-    (1, 'Carlos Alberto Albuquerque', '44213242190', '27969216379', 'carlos.alb12@gmail.com', 1),
-    (2, 'Olívia Ribeiro Ferreira', '91975838041', '35998195626', 'olivia.rib1@outlook.com', 2),
-    (3, 'Luiz Rodrigo Lima Mendes', '57014585045', '67988644718', 'luiz.rodrigo223@gmail.com', 3),
-    (4, 'Mirtes Faria Lima', '37875791090', '83985817934', 'm.faria.l1@gmail.com', 4),
-    (5, 'Rafael Monarca da Silva', '45655175070', '63991516460', 'rafa.monarca213@yahoo.com', 5),
-    (6, 'Ana Carolina dos Santos Faria', '80690964030', '17981481645', 'carol.ana14@gmail.com', 6),
-    (7, 'Lucas Rafael de Jesus', '25154112075', '96981677764', 'luca.rafa2@hotmail.com', 7),
-    (8, 'Erika Ferreira Luz', '93735415016', '84987453778', 'erika.ferr221@gmail.com', 8),
-    (9, 'Iago Malta Piteira', '19940979061', '47994722576', 'iago.malta22@outlook.com', 9),
-    (10, 'Márcia Melo Resende', '94137767092', '67987741537', 'marcia.resende.melo@gmail.com', 10)
+    (1, 1, 'R$ 23.99', '9KG', '30cm', '30cm','30cm'),
+    (2, 2, 'R$ 13.67', '3KG', '25cm', '25cm','25cm'),
+    (3, 3, 'R$ 22.25', '0.5KG', '100cm','100cm','100cm'),
+    (4, 4, 'R$ 56.20', '2KG', '45.2cm','45.2cm','45.2cm'),
+    (5, 5, 'R$ 56.20', '5.5KG', '29cm','29cm','29cm'),
+    (6, 6, 'R$ 102.57', '15KG', '33cm','33cm','33cm'),
+    (7, 7, 'R$ 120.00', '2.2KG', x'150cm','150cm','150cm'),
+    (8, 8, 'R$ 33.42', '1.4KG', '58cm','58cm','58cm'),
+    (9, 9, 'R$ 19.98', '1.2KG', '60cm','60cm','60cm'),
+    (10, 10, 'R$ 19.09', '0.8KG', '8cm','8cm','8cm')
 `
 
 function criaTabelaUsr() {
-    db.run(CLIENTES_SCHEMA, (error)=> {
-       if (error) console.log("Erro ao criar tabela de clientes");
+    db.run(PACOTES_SCHEMA, (error)=> {
+       if (error) console.log("Erro ao criar tabela de pacotes");
     });
 }
 
 
 function populaTabelaUsr() {
-    db.run(ADD_CLIENTES_DATA, (error)=> {
-       if (error) console.log("Erro ao popular tabela de clientes");
+    db.run(ADD_PACOTES_DATA, (error)=> {
+       if (error) console.log("Erro ao popular tabela de pacotes");
     });
 }
 
