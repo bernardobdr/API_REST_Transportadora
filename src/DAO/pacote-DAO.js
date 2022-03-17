@@ -5,7 +5,7 @@ class PacoteDAO {
 
     pegaTodosPacotes = ()=>{
         return new Promise((resolve, reject)=>{
-            this.db.all('SELECT * FROM CLIENTES', (error, rows)=>{
+            this.db.all('SELECT * FROM PACOTES', (error, rows)=>{
                 if(error){
                     reject({
                         "mensagem": error.message,
@@ -13,7 +13,7 @@ class PacoteDAO {
                     })
                 }else{
                     resolve({
-                        "clientes": rows,
+                        "pacotes": rows,
                         "erro": false
                     })
                 }
@@ -21,9 +21,9 @@ class PacoteDAO {
         })
     }
 
-    pegaUmCliente = (id)=>{
+    pegaUmPacote = (id)=>{
         return new Promise((resolve, reject)=>{
-            this.db.all('SELECT * FROM CLIENTES WHERE ID = ?', 
+            this.db.all('SELECT * FROM PACOTES WHERE ID = ?', 
             id,
             (error, rows)=>{
                 if(error){
@@ -42,10 +42,10 @@ class PacoteDAO {
         })
     }
 
-    insereCliente = (novoCliente)=>{
+    inserePacote = (novoPacote)=>{
         return new Promise((resolve, reject)=>{
-            this.db.run('INSERT INTO CLIENTES VALUES (?, ?, ?, ?, ?, ?)',
-            novoCliente.id ,novoCliente.nome_completo, novoCliente.cpf, novoCliente.telefone, novoCliente.email, novoCliente.pedidos_id,
+            this.db.run('INSERT INTO PACOTES VALUES (?, ?, ?, ?, ?, ?)',
+            novoPacote.id , novoPacote.cliente_id, novoPacote.frete, novoPacote.peso, novoPacote.largura, novoPacote.altura, novoPacote.comprimento,
             (error)=>{
                 if(error){
                     reject({
@@ -54,8 +54,8 @@ class PacoteDAO {
                     })
                 }else{
                     resolve({
-                        "mensagem": `Cliente ${novoCliente.nome_completo} inserido com sucesso!`,
-                        "cliente": novoCliente,
+                        "mensagem": `Pacote ${novoPacote.id} inserido com sucesso!`,
+                        "pacote": novoPacote, 
                         "erro": false
                     })
                 }
@@ -64,9 +64,9 @@ class PacoteDAO {
         })
     }
 
-    deletaCliente = (id)=>{
+    deletaPacote = (id)=>{
         return new Promise((resolve, reject)=>{
-            this.db.run('DELETE FROM CLIENTES WHERE ID = ?',
+            this.db.run('DELETE FROM PACOTES WHERE ID = ?',
             id,
             (error)=>{
                 if(error){
@@ -76,7 +76,7 @@ class PacoteDAO {
                     })
                 }else{
                     resolve({
-                        "cliente": `Cliente de id ${id} deletado com sucesso!`,
+                        "pacote": `Pacote de id ${id} deletado com sucesso!`,
                         "erro": false
                     })
                 }
@@ -85,10 +85,12 @@ class PacoteDAO {
         })
     }
 
-    atualizaCliente = (id, cliente)=>{
+    // id, cliente_id, frete, peso, largura, altura, comprimento
+
+    atualizaPacote = (id, pacote)=>{
         return new Promise((resolve, reject)=>{
-            this.db.run('UPDATE CLIENTES SET NOME_COMPLETO = ?, CPF = ?, TELEFONE = ?, EMAIL = ? WHERE ID = ?',
-            cliente.nome_completo, cliente.cpf, cliente.telefone, cliente.email,
+            this.db.run('UPDATE PACOTES SET CLIENTE_ID = ?, FRETE = ?, PESO = ?, LARGURA = ?, ALTURA = ?, COMPRIMENTO = ?, WHERE ID = ?',
+            pacote.cliente_id, pacote.frete, pacote.peso, pacote.largura, pacote.altura, pacote.comprimento,
             id,
             (error)=>{
                 if(error){
@@ -98,8 +100,8 @@ class PacoteDAO {
                     })
                 }else{
                     resolve({
-                        "mensagem": `Cliente de id ${id} atualizado com sucesso`,
-                        "cliente": cliente,
+                        "mensagem": `Pacote de id ${id} atualizado com sucesso`,
+                        "pacote": pacote,
                         "erro": false
                     })
                 }
@@ -109,4 +111,4 @@ class PacoteDAO {
     }
 }
 
-export default ClienteDAO
+export default PacoteDAO

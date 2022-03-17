@@ -35,14 +35,14 @@ VALUES
     (10, 10, 'R$ 19.09', '0.8KG', '8cm','8cm','8cm')
 `
 
-function criaTabelaUsr() {
+function criaTabelaPacote() {
     db.run(PACOTES_SCHEMA, (error)=> {
        if (error) console.log("Erro ao criar tabela de pacotes");
     });
 }
 
 
-function populaTabelaUsr() {
+function populaTabelaPacote() {
     db.run(ADD_PACOTES_DATA, (error)=> {
        if (error) console.log("Erro ao popular tabela de pacotes");
     });
@@ -50,6 +50,6 @@ function populaTabelaUsr() {
 
 
 db.serialize( ()=> {
-    criaTabelaUsr();
-    populaTabelaUsr();
+    criaTabelaPacote();
+    populaTabelaPacote();
 });
