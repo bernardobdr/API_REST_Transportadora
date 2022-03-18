@@ -13,7 +13,7 @@ class PacoteDAO {
                     })
                 }else{
                     resolve({
-                        "pacotes": rows,
+                        "pacote": rows,
                         "erro": false
                     })
                 }
@@ -33,7 +33,7 @@ class PacoteDAO {
                     })
                 }else{
                     resolve({
-                        "usuario": rows,
+                        "pacote": rows,
                         "erro": false
                     })
                 }

@@ -1,11 +1,11 @@
-import Cliente from "../models/Cliente.js";
-import ClienteDAO from "../DAO/cliente-DAO.js"
+import Pacote from "../models/Pacote.js";
+import PacoteDAO from "../DAO/pacote-DAO.js"
 
-const clienteController = (app, bd)=>{
-    const clienteDAO = new ClienteDAO(bd)
+const pacoteController = (app, bd)=>{
+    const pacoteDAO = new PacoteDAO(bd)
 
-    app.get('/cliente', (req, res)=>{
-        clienteDAO.pegaTodosClientes()
+    app.get('/pacote', (req, res)=>{
+        pacoteDAO.pegaTodosPacotes()
         .then((resposta)=>{
             res.status(302).json(resposta)
         })
@@ -14,10 +14,10 @@ const clienteController = (app, bd)=>{
         })
     })
 
-    app.get('/cliente/id/:id', (req, res)=>{
+    app.get('/pacote/id/:id', (req, res)=>{
         const id = req.params.id
 
-        clienteDAO.pegaUmCliente(id)
+        pacoteDAO.pegaUmPacote(id)
         .then((resposta)=>{
             res.status(302).json(resposta)
         })
@@ -26,12 +26,12 @@ const clienteController = (app, bd)=>{
         })
     })
 
-    app.post('/cliente', (req, res)=>{
+    app.post('/pacote', (req, res)=>{
         const body = req.body
         try {
-            const novoCliente = new Cliente(body.ID, body.NOME_COMPLETO, body.CPF, body.TELEFONE, body.EMAIL, body.PEDIDOS_ID)
+            const novoPacote = new Pacote(body.ID, body.CLIENTE_ID, body.FRETE, body.PESO, body.LARGURA, body.ALTURA, body.COMPRIMENTO)
             
-            clienteDAO.insereCliente(novoCliente)
+            pacoteDAO.inserePacote(novoPacote)
             .then((resposta)=>{
                 res.status(201).json(resposta)
             })
@@ -46,10 +46,10 @@ const clienteController = (app, bd)=>{
         }
     })
 
-    app.delete('/cliente/id/:id', (req, res)=>{
+    app.delete('/pacote/id/:id', (req, res)=>{
         const id = req.params.id
 
-        clienteDAO.deletaCliente(id)
+        pacoteDAO.deletaPacote(id)
         .then((resposta)=>{
             res.status(200).json(resposta)
         })
@@ -58,15 +58,15 @@ const clienteController = (app, bd)=>{
         })
     })
 
-    app.put('/cliente/id/:id', (req, res)=>{
+    app.put('/pacote/id/:id', (req, res)=>{
         const id = req.params.id
 
         const body = req.body
 
         try {
-            const clienteAtualizado = new Cliente(body.ID, body.NOME_COMPLETO, body.CPF, body.TELEFONE, body.EMAIL, body.PEDIDOS_ID)
+            const pacoteAtualizado = new Pacote(body.ID, body.NOME_COMPLETO, body.CPF, body.TELEFONE, body.EMAIL, body.PEDIDOS_ID)
 
-            clienteDAO.atualizaCliente(id, clienteAtualizado)
+            pacoteDAO.atualizaPacote(id, pacoteAtualizado)
             .then((resposta)=>{
                 res.status(200).json(resposta)
             })
@@ -82,4 +82,4 @@ const clienteController = (app, bd)=>{
     })
 }
 
-export default clienteController
+export default pacoteController
