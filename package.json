@@ -1,7 +1,7 @@
 {
   "name": "projeto-final-de-modulo-4",
   "version": "1.0.0",
-  "description": "API Rest da Transportadora Shark",
+  "description": "API Rest Transportadora",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,17 +12,17 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Hudson-Uchoa/API-Rest-Transportadora.git"
+    "url": "git+https://github.com/bernardobdr/API_REST_Transportadora"
   },
   "author": "Turma 11 da Resilia",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Hudson-Uchoa/API-Rest-Transportadora/issues"
+    "url": "https://github.com/bernardobdr/API_REST_Transportadora"
   },
-  "homepage": "https://github.com/Hudson-Uchoa/API-Rest-Transportadora#readme",
+  "homepage": "https://github.com/bernardobdr/API_REST_Transportadora#readme",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.17.3",
+    "express": "^4.17.3", 
     "sqlite3": "^5.0.2"
   },
   "devDependencies": {

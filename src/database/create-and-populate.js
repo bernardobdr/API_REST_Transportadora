@@ -25,7 +25,15 @@ INSERT INTO PACOTES (ID, CLIENTE_ID, FRETE, PESO, LARGURA, ALTURA, COMPRIMENTO)
 VALUES 
     (1, 1, 'R$ 23.99', '9KG', '30cm', '30cm','30cm'),
     (2, 2, 'R$ 13.67', '3KG', '25cm', '25cm','25cm'),
-    (3, 3, 'R$ 22.25', '0.5KG', '100cm','100cm','100cm')
+    (3, 3, 'R$ 22.25', '0.5KG', '100cm','100cm','100cm'),
+    (4, 4, 'R$ 23.99', '9KG', '30cm', '30cm','30cm'),
+    (5, 5, 'R$ 13.67', '3KG', '25cm', '25cm','25cm'),
+    (6, 6, 'R$ 22.25', '0.5KG', '100cm','100cm','100cm'),
+    (7, 7, 'R$ 23.99', '9KG', '30cm', '30cm','30cm'),
+    (8, 8, 'R$ 13.67', '3KG', '25cm', '25cm','25cm'),
+    (9, 9, 'R$ 22.25', '0.5KG', '100cm','100cm','100cm'),
+    (10, 10, 'R$ 23.99', '9KG', '30cm', '30cm','30cm')
+
 `
 
 function criaTabelaPacote() {
