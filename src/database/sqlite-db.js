@@ -6,12 +6,11 @@ const filePath = dirname(fileURLToPath(import.meta.url)) + '/database.db'
 const db = new sqlite3.Database(filePath);
 
 
-//Processamento de sinal
 process.on('SIGINT', () =>
     db.close(() => {
         console.log('BD encerrado!');
         process.exit(0);
     })
-);
+)
 
 export default db

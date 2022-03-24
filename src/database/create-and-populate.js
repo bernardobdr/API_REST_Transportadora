@@ -1,6 +1,3 @@
-/*
-Esse arquivo deve ser executado apenas uma vez para que a o banco seja criado e populado
-*/
 import sqlite3 from 'sqlite3'
 import { dirname } from'path'
 import { fileURLToPath } from 'url'
@@ -14,43 +11,43 @@ CREATE TABLE IF NOT EXISTS "PACOTES" (
     "ID" INTEGER PRIMARY KEY AUTOINCREMENT,
     "CLIENTE_ID" INT,
     "FRETE" varchar(20),
-    "PESO" varchar(20),
-    "LARGURA" varchar(20),
-    "ALTURA" varchar(20),
-    "COMPRIMENTO" varchar(20)
+    "PESO" float,
+    "LARGURA" float,
+    "ALTURA" float,
+    "COMPRIMENTO" float
   );`;
 
 const ADD_PACOTES_DATA = `
 INSERT INTO PACOTES (ID, CLIENTE_ID, FRETE, PESO, LARGURA, ALTURA, COMPRIMENTO)
 VALUES 
-    (1, 1, 'R$ 23.99', '9KG', '30cm', '30cm','30cm'),
-    (2, 2, 'R$ 13.67', '3KG', '25cm', '25cm','25cm'),
-    (3, 3, 'R$ 22.25', '0.5KG', '100cm','100cm','100cm'),
-    (4, 4, 'R$ 23.99', '9KG', '30cm', '30cm','30cm'),
-    (5, 5, 'R$ 13.67', '3KG', '25cm', '25cm','25cm'),
-    (6, 6, 'R$ 22.25', '0.5KG', '100cm','100cm','100cm'),
-    (7, 7, 'R$ 23.99', '9KG', '30cm', '30cm','30cm'),
-    (8, 8, 'R$ 13.67', '3KG', '25cm', '25cm','25cm'),
-    (9, 9, 'R$ 22.25', '0.5KG', '100cm','100cm','100cm'),
-    (10, 10, 'R$ 23.99', '9KG', '30cm', '30cm','30cm')
+    (1, 1, '23.99', '9', '30', '30','30'),
+    (2, 2, '13.67', '3', '25', '25','25'),
+    (3, 3, '22.25', '0.5', '100','100','100'),
+    (4, 4, '23.99', '9', '30', '30','30'),
+    (5, 5, '13.67', '3', '25', '25  ','25'),
+    (6, 6, '22.25', '0.5', '100','100','100'),
+    (7, 7, '23.99', '9', '30', '30','30'),
+    (8, 8, '13.67', '3', '25', '25','25'),
+    (9, 9, '22.25', '0.5', '100','100','100'),
+    (10, 10, '23.99', '9', '30', '30','30')
 
 `
 
 function criaTabelaPacote() {
     db.run(PACOTES_SCHEMA, (error)=> {
-       if (error) console.log("Erro ao criar tabela de pacotes");
-    });
+       if (error) console.log("Erro ao criar tabela de pacotes")
+    })
 }
 
 
 function populaTabelaPacote() {
     db.run(ADD_PACOTES_DATA, (error)=> {
-       if (error) console.log("Erro ao popular tabela de pacotes");
+       if (error) console.log("Erro ao popular tabela de pacotes")
     });
 }
 
 
 db.serialize( ()=> {
-    criaTabelaPacote();
-    populaTabelaPacote();
-});
+    criaTabelaPacote()
+    populaTabelaPacote()
+})
