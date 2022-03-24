@@ -1,20 +1,20 @@
 import Pacote from "../models/Pacote.js";
 import PacoteDAO from "../DAO/pacote-DAO.js";
 
-function pacoteController(app, bd) {
-    const pacoteDAO = new PacoteDAO(bd);
+const pacoteController = (app, bd)=> {
+    const pacoteDAO = new PacoteDAO(bd)
 
-    app.get('/pacote', async (req, res) => {
+    app.get('/pacote', async (req, res)=> {
 
         try {
-            res.json(await pacoteDAO.pegaTodosPacotes());
+            res.json(await pacoteDAO.pegaTodosPacotes())
         }
         catch (error) {
-            res.status(400).json(error);
+            res.status(400).json(error)
         }
     
-    });
-}
+    })
+
     app.get('/pacote/id/:id', async (req, res) => {
         const id = req.params.id;
 
@@ -27,34 +27,33 @@ function pacoteController(app, bd) {
             res.status(404).json(error.message);
         }
 
-        app.post('/pacote', (req, res) => {
-            const body = req.body;
+        app.post('/pacote', async(req, res) => {
+            const body = req.body   
             try {
                 const novoPacote = new Pacote(body.ID, body.CLIENTE_ID, body.FRETE, body.PESO, body.LARGURA, body.ALTURA, body.COMPRIMENTO);
 
-                res.status(201).json(await pacoteDAO.inserePacote(novoPacote));
-
+                res.status(201).json(await pacoteDAO.inserePacote(novoPacote))
 
             } catch (error) {
-                res.status(400).json(error);
+                res.status(400).json(error)
 
                 res.json({
                     'msg': error.message,
                     'erro': true
-                });
+                })
             }
-        });
+        })
         app.delete('/pacote/id/:id', async (req, res) => {
-            const id = req.params.id;
+            const id = req.params.id
             try {
-                await pacoteDAO._verificaId(id);
-                const delUsuario = await pacoteDAO.deletaPacote(id);
+                await pacoteDAO._verificaId(id)
+                const delPacote = await pacoteDAO.deletaPacote(id)
                 res.status(201).json(delPacote);
             }
             catch (error) {
-                res.status(400).json(error.message);
+                res.status(400).json(error.message)
             }
-        });
+        })
 
         app.put('/pacote/id/:id', async (req, res) => {
             const id = req.params.id;
@@ -80,5 +79,5 @@ function pacoteController(app, bd) {
         });
     });
 
-
+}
     export default pacoteController
