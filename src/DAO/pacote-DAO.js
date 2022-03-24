@@ -107,15 +107,17 @@ class PacoteDAO {
             )
         })
     }
+
+    _verificaId = async (id)=>{
+        const pacote = await this.pegaUmPacote(id)
+        if(pacote.pacote == undefined){
+            throw new Error(`Pacote de ${id} não encontrado.`)
+        }
+        return pacote
+}
 }
 
 export default PacoteDAO
 
-_verificaId = async (id)=>{
-    const pacote = await this.pegaUmPacote(id)
-    if(pacote.pacote == undefined){
-        throw new Error(`Pacote de ${id} não encontrado.`)
-    }
-    return pacote
-}
+
 
