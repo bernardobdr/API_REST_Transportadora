@@ -32,8 +32,8 @@ CORS: v2.8.5
 
 <h2>Instalação</h2>
 
-Clone do repositório
-
+Clone do repositório<br>
+https://github.com/bernardobdr/API_REST_Transportadora
 
 Instalando Pacotes<br>
 npm install<br>
