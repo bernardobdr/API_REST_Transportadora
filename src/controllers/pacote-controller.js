@@ -16,18 +16,18 @@ const pacoteController = (app, bd)=> {
     })
 
     app.get('/pacote/id/:id', async (req, res) => {
-        const id = req.params.id;
+        const id = req.params.id
 
         try {
             await pacoteDAO._verificaId(id);
-            const pacote = await pacoteDAO.pegaUmPacote(id);
-            res.status(302).json(pacote);
+            const pacot = await pacoteDAO.pegaUmPacote(id);
+            res.status(302).json(pacot);
         }
         catch (error) {
             res.status(404).json(error.message);
         }
 
-        app.post('/pacote', async(req, res) => {
+    app.post('/pacote', async(req, res) => {
             const body = req.body   
             try {
                 const novoPacote = new Pacote(body.ID, body.CLIENTE_ID, body.FRETE, body.PESO, body.LARGURA, body.ALTURA, body.COMPRIMENTO);

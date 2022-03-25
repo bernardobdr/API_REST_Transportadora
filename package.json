@@ -12,7 +12,7 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bernardobdr/API_REST_Transportadora"
+    "url": "git+https://github.com/bernardobdr/API_REST_Transportadora.git"
   },
   "author": "Turma 11 da Resilia",
   "license": "ISC",
@@ -22,7 +22,7 @@
   "homepage": "https://github.com/bernardobdr/API_REST_Transportadora#readme",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.17.3", 
+    "express": "^4.17.3",
     "sqlite3": "^5.0.2"
   },
   "devDependencies": {

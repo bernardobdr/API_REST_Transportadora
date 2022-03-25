@@ -10,7 +10,7 @@ const PACOTES_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "PACOTES" (
     "ID" INTEGER PRIMARY KEY AUTOINCREMENT,
     "CLIENTE_ID" INT,
-    "FRETE" varchar(20),
+    "FRETE" float,
     "PESO" float,
     "LARGURA" float,
     "ALTURA" float,
@@ -24,7 +24,7 @@ VALUES
     (2, 2, '13.67', '3', '25', '25','25'),
     (3, 3, '22.25', '0.5', '100','100','100'),
     (4, 4, '23.99', '9', '30', '30','30'),
-    (5, 5, '13.67', '3', '25', '25  ','25'),
+    (5, 5, '13.67', '3', '25', '25','25'),
     (6, 6, '22.25', '0.5', '100','100','100'),
     (7, 7, '23.99', '9', '30', '30','30'),
     (8, 8, '13.67', '3', '25', '25','25'),
