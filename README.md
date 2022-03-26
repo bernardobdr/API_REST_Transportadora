@@ -2,7 +2,7 @@
 
 <img src="https://cargox.com.br/wp-content/uploads/2018/03/Um-novo-fator-que-est%C3%A1-mudando-o-modelo-tradicional-de-transportadoras.jpg" width="1000px" height="400px">
 
-Projeto final de módulo (IV) do curso de Web Dev Full Stack da Resilia Educação.
+Projeto final de módulo 4 do curso de Web Dev Full Stack da Resilia Educação.
 
 Projeto realizado utilizando o Node.js com framework Express.
 
@@ -10,7 +10,7 @@ Projeto realizado utilizando o Node.js com framework Express.
 
 <h2>Objetivo</h2>
 
-Projeto criado com o objetivo a criação de uma API Rest de uma transportadora utilizando as operações CRUD.
+Criação de uma API Rest de uma transportadora utilizando as operações CRUD.
 
 ##
 
